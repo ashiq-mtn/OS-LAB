@@ -96,7 +96,7 @@ void main()
             break;
         }
     }
-    if(flag == 1)
+    if(flag == 1)   // PROCESS IS COMPLETED
     {
         printf("\n\n--++--Safe Sequence--++--\n\n");
         for(int i = 0 ; i < n-1 ; i++)
