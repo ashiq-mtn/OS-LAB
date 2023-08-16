@@ -34,7 +34,7 @@ void main()
     {
         for(int j = 0 ; j < m ; j++)
         {
-            need[i][j] = max[i][j] - alloc[i][j];
+            need[i][j] = max[i][j] - alloc[i][j]; //calculating NEED
             printf(" %d ",need[i][j]);
         }
         printf("\n");
@@ -54,7 +54,7 @@ void main()
     }
     for(int i = 0 ; i < m ; i++)
     {
-        work[i] = avai[i];
+        work[i] = avai[i];  //WORK = AVAILABLE
     }
     //calculation
     for(int k = 0 ; k < n ; k++)
@@ -72,9 +72,9 @@ void main()
                         break;
                     }
                 }
-                if(flag == 0)
+                if(flag == 0)  // NEED < AVAILABLE
                 {
-                    safeSequence[ind++] = i;
+                    safeSequence[ind++] = i+1;
                     for(int y = 0 ; y < m ; y++)
                     {
                         work[y] += alloc[i][y];
@@ -89,7 +89,7 @@ void main()
     int flag = 1;
     for(int i = 0 ; i < n ; i++)
     {
-        if(finish[i] == 0)
+        if(finish[i] == 0)  // PROCESS IS NOT COMPLETED
         {
             flag = 0;
             printf("\n!!DEADLOCK OCCURS!!\n");
@@ -98,10 +98,11 @@ void main()
     }
     if(flag == 1)
     {
-        printf("\n--++--Safe Sequence--++--\n");
-        for(int i = 0 ; i < n ; i++)
+        printf("\n\n--++--Safe Sequence--++--\n\n");
+        for(int i = 0 ; i < n-1 ; i++)
         {
-            printf(" P%d ,",safeSequence[i]+1);
+            printf(" P%d ==> ",safeSequence[i]);
         }
+        printf(" P%d ",safeSequence[n-1]);
     }
 }
